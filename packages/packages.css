@@ -1,0 +1,190 @@
+@font-face{
+    font-family:"AnonymousPro";
+    src:url("anonymousPro-Regular.ttf") format("truetype");
+   
+    /* src:url("anonymousPro-Regular.woff2") format("woff2"),
+    url("anonymousPro-Regular.woff") format("woff"),
+    url("anonymousPro-Regular.ttf") format("truetype"), */
+    /* we can use above 3 lines if we have woff and woff2 files and where woff2 have high priority here as it supports more browser */
+     /* font-display: swap; */
+}
+
+@font-face{
+    font-family:"AnonymousPro";
+    src:url("anonymousPro-BoldItalic.ttf") format("truetype");
+    font-weight: 700;
+    font-style: italic;
+}
+
+main{
+    padding-top: 2rem;
+    /* margin: 3.5rem 0; */
+    /* PADDING CHANGED FROM 2REM TO 6REM */
+} 
+
+.background{
+    background: url("../images/plans-background.jpg")  center/cover;
+    /* filter: blur(8px); */
+    filter: grayscale(40%);
+    /* filter: drop-shadow(16px 16px 20px red) invert(75%); */
+    width:100vw;
+    height:100vh;
+    position:fixed;
+    z-index: -1;
+}
+
+
+.plan_options{
+    border:4px solid #0e4f1f;
+    border-left: none;
+    margin:1rem 0;
+    /* background: rgba(199, 248, 187, 0.74); */
+    width:80%;
+    position: relative; 
+    /* z-index: 1; */ 
+    overflow: hidden;
+}
+
+.plan_options:active,
+.plan_options:hover{
+    box-shadow: 2px 2px 4px rgb(0,0,0,0.5);
+    /* border-color: #ff5454;  this is one way to fix the specificity of border-left color for free plan ====but use it rarely, the best way is defined below*/
+    border-color: #ff5454 !important;
+    animation:package-up  4s  ease-out forwards;
+}
+
+.clearfix{
+    clear:both;
+}
+
+#premium{
+    background: rgb(12, 77, 12);
+}
+
+#free{
+    background: rgb(193, 245, 193);
+    float:right;
+    border-right: none;
+    border-left:4px solid #0e4f1f;
+    text-align:right;
+}
+
+#free:hover,
+#free:active{
+    border-left-color: #ff5454;
+}
+/* this is one way to fix the specificity of border-left color for free plan->its the best way. */
+
+#plus{
+    background: rgb(110, 175, 110);
+}
+
+.highlight{
+    text-decoration: none;
+    display: block;
+    color:inherit;
+    padding:2rem;
+}
+
+.plan_heading{
+    color:black;
+}
+
+.plan_badge{
+    position:absolute;
+    top:0px;
+    right:0px;
+    margin:0;
+    font-size: 0.8rem;
+    color:white;
+    background: #ff5454;
+    padding:0.5rem;
+    z-index:10;
+    width:12rem;
+    text-align: center;
+    /* transform:rotateZ(45deg) translateX(3.5rem) translateY(-1rem); */
+    transform:rotate(45deg) translate(3.5rem,-1rem);
+    /* transform-origin: left top; */
+    transform-origin: 50% 50%;
+    /*50% 50% is equal to center and default so no need to write  */
+}
+
+.plan_subheading{
+    color:rgb(107, 95, 95);
+    font-weight: bolder;
+}
+
+.plan_descrip{  
+    /* font: italic 700  1.2rem 'AnonymousPro', sans-serif ; */
+
+    /* for our code above line is 1st way to use FONT */
+    /* font: italic small-caps 700  1.2rem/1 'AnonymousPro', sans-serif ; */
+    /* font-style font-varient font-weight font-size/line-height font-family; */
+    
+    /* font-style: italic; */
+    /*font-weight:700; */
+    font-size: 1.2rem;
+    /* line-height: 1; */
+    /* font-family: 'AnonymousPro', sans-serif;*/
+    
+    /* font:status-bar; */
+    /* second way to use font property */
+    
+    color:#0e4f1f;
+    border:1px solid black;
+    padding:1rem;
+    background: white;
+    /* margin:0.5rem; */
+    
+    /* text-decoration: underline wavy blue; */
+    /* text-shadow: 2px 2px 7px rgb(143, 140, 140); */
+}
+
+#premium .plan_heading{
+    color:white;
+}
+
+#premium .plan_subheading{
+   color:#bbb;
+}
+
+@media(min-width:40rem){
+    main{
+      /* margin: 3.5rem auto; */
+      margin-left: auto;
+      margin-right: auto;
+      max-width:1500px;
+    }
+}
+
+@media(min-width:1500px){
+    .plan_options{
+      border-left:4px solid #0e4f1f; 
+    }
+
+    #free{
+        border-right:4px solid #0e4f1f;
+    }
+
+    
+    #free:hover,
+    #free:active{
+        border-right-color: #ff5454;
+    }
+}
+
+@keyframes package-up{
+    0%{
+        transform:translateY(0);
+    }
+
+    33%{
+        transform:translateY(-1.5rem);
+    }
+
+    0%{
+        transform:translateY(-1rem);
+    }
+}
+
+/* translateY to push-up the animation and -1.5 will push it up */

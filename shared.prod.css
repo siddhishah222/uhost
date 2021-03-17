@@ -1,0 +1,476 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:400,900');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton|Montserrat:400,700');
+
+:root{
+    --royal-blue:royalblue;
+    --dark-green:rgb(33, 56, 35);
+}
+/* this will select entire document */
+
+*{
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+/* universal selector for making box-sizing set to border-box to all elements and this is very imp */
+
+html{
+    /* height:100%; needed for fixing height:100% */
+    /* font-size: 75%; */ 
+    /* we can define font-size to our desired % than the default browser setting for whole Html page. */
+    height:100%;
+}  
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    margin:0px;
+    /* height:100%; needed for fixing height:100% */
+    display:-ms-grid;
+    display:grid;
+    -ms-grid-rows: 3.5rem auto fit-content(8rem);
+    grid-template-rows: 3.5rem auto fit-content(8rem);
+    /* padding-top: 3.5rem; */
+    height:100%;
+        grid-template-areas:"header"
+                        "main" 
+                        "footer";
+}
+/* Inheritance */
+
+main{
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    /* min-height:calc(100vh-3.5rem- 8rem); */
+    /* margin-top: 3.5rem; */
+    /* grid-row: 2/3; */
+    grid-area: main;
+}
+
+.backdrop{
+    /* position: relative; needed for fixing height:100% */
+    /* as position STATIC will not allow us to add "z-index" */
+
+    /* To fix height:100% for backdrop, either use RELATIVE and 100% in BODY AND HTML or Just ABSOLUTE position as below. */
+    /* position: absolute; */
+    position: fixed;
+    top:0;
+    left:0;
+    z-index:60;
+    width: 100vw;
+    height:100vh;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    opacity: o;
+    -webkit-transition: opacity 0.2s linear;
+    -o-transition: opacity 0.2s linear;
+    transition: opacity 0.2s linear;
+}
+
+
+
+/* HEADER  */
+.main-header{
+    padding:0.5rem 1rem;
+    background:rgba(149, 248, 125, 0.74);
+   /* for making nav bar fixed */
+    width:100%; 
+    position:fixed;  
+    top:0;
+    left:0;
+    z-index:1;
+    height: 3.5rem;
+    /* I ADDED HEIGHT FOR FIT */
+    display: --webkit-box;
+    display:-ma-flexbox;
+    /* for newer version of safari */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+
+.toggle-button{
+    width:3rem;
+    background: transparent;
+    border:none;
+    cursor:pointer;
+    padding-top: 0;
+    padding-bottom: 0;
+    vertical-align: middle;
+}
+
+.toggle-button:focus{
+    outline: none;
+}
+
+.toggle-button__bar{
+    width:100%;
+    height: 0.2rem;
+    background: black;
+    display:block;
+    margin:0.6rem 0;
+    /* 0.6rem changd to 0.3rem */
+}
+
+@media(min-width:40rem){
+    .toggle-button{
+        display:none;
+    }
+}
+
+.main-header__brand{
+    color:var(--royal-blue), royalblue;
+    font-weight: bold;
+    text-decoration: none;
+    /* height:2.5rem; */
+    /* height:1.5rem;  */
+    /* display:inline-block;
+    vertical-align: middle; */
+}
+
+.main-header__brand img{
+    height:2.5rem;
+    vertical-align: middle;
+    /* height:100%; */
+    /* width:22px; */
+    /* height in image itself and not to the container .main-header__brand for setting logo in header */
+    /* dont use height 100% only else it will use original height of image and not the height of header */
+}
+
+/* .main-header>div{
+    display:inline-block;
+    vertical-align: middle;
+} */
+
+
+
+/* Footer */
+.main-footer{
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    background: black;
+    margin-top:3rem;
+    padding:2rem; 
+    /* grid-row: 3/4; */
+    grid-area: footer;
+}
+
+.main-footer__links{
+    list-style: none;
+    margin:0;
+    padding:0;
+    /* text-align: center; */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.main-footer__link{
+    /* display: block; */
+    margin: 0.5rem 0 ;
+}
+
+.main-footer__links a{
+    color:white;
+    text-decoration: none;
+}
+
+.main-footer__link a:hover,
+.main-footer__link a:active{
+    color:#ccc;
+}
+
+@media(min-width:40rem){
+    .main-footer__link{
+        /* display: inline-block; */
+        margin: 0 1rem;
+    }
+
+    .main-footer__links{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+    }
+    
+}
+
+/* NAV */
+
+.main-nav{
+    display:none;
+}
+
+.main-nav__items{
+    margin:0;
+    padding:0;
+    list-style: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.main-nav__item{
+    /* display:inline-block;  */
+    margin: 0px 1rem;
+}
+
+.main-nav__item a,
+.mobile-nav__item a{
+   text-decoration: none;
+   font-weight: bold;
+   /* padding:0px 0px 3px 0px; */
+   padding: 0.2rem 0;
+}
+
+/* 
+.main-nav__item a:hover{
+   color:white;
+}
+/* Pseudo class */
+
+/* .main-nav__item a:active{
+    color:white;
+} */
+/*Pseudo class */
+/* commented */
+
+.main-nav__item a:hover,
+.main-nav__item a:active
+ {
+    color:white;
+    border-bottom: 5px solid white;
+ }
+ /* Grouping above 2 pseudo class rule */
+
+
+
+.mobile-nav__item a:hover,
+.mobile-nav__item a:active {
+    color:rgb(226, 13, 13);
+    /* border-bottom: 5px solid rgb(57, 0, 133); */
+}
+
+/* .main-nav__item a::after{
+    content: "(Link)";
+    color:red;
+}
+pseudo Element */
+ 
+/* NAV */
+
+.main-nav__item--cta{
+    -webkit-animation: wiggle 400ms  3s 8 ease-out none;
+            animation: wiggle 400ms  3s 8 ease-out none;
+}
+
+.main-nav__item--cta a,
+.mobile-nav__item--cta a{
+    background:var(--royal-blue) ;
+    color:white;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+}
+/* to make start hosting stand out */
+
+.main-nav__item--cta a:hover,
+.main-nav__item--cta a:active,
+.mobile-nav__item--cta a:hover,
+.mobile-nav__item--cta a:active
+{
+    border: none;
+    background:white ;
+    color:var(--royal-blue);
+}
+/* to make start hosting stand out */
+
+.mobile-nav{
+    -webkit-transform:translateX(-100%) ;
+        -ms-transform:translateX(-100%) ;
+            transform:translateX(-100%) ; 
+    /* display:none; */
+    position:fixed;
+    z-index:101;
+    top:0;
+    left:0;
+    background: white;
+    width:80%;
+    height:100vh;
+    /* opacity:0; */
+    -webkit-transition: -webkit-transform 300ms ease-out;
+    transition: -webkit-transform 300ms ease-out;
+    -o-transition: transform 300ms ease-out ;
+    transition: transform 300ms ease-out ;
+    transition: transform 300ms ease-out, -webkit-transform 300ms ease-out;
+}
+
+.mobile-nav__items{
+    width:90%;
+    height: 100%;
+    list-style: none;
+    margin:0% auto;
+    padding:0;
+    /* text-align: center; */
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+
+}
+
+.mobile-nav__item{
+    margin: 1rem 0;
+}
+
+.mobile-nav__item a{
+    font-size: 1.2rem;
+}
+
+
+@media(min-width:40rem){
+    .main-nav{
+        /* display:inline-block; */
+        /* text-align: right; */
+        /* width: calc(100% - 44px); */
+        /* vertical-align: middle;  */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+}
+/* media ends */
+
+
+/* Button */
+.button{
+    background:var(--dark-green,rgb(33, 56, 35));
+    color:white;
+    font:inherit;
+    font-weight: bold;
+    border-radius: 16px;
+    padding: 1rem;
+    border: 1px solid var(--dark-green);
+    cursor:pointer;
+}
+
+.button:hover,
+.button:active{
+    background: white;
+    color: var(--dark-green);
+}
+
+.button:focus{
+    outline: none;
+}
+
+.button[disabled]{
+    cursor:not-allowed;
+    border: #a1a1a1;
+    color:#868282;
+    background: #ccc;
+
+}
+
+.open{
+    display:block !important;
+    opacity: 1 !important;
+    -webkit-transform: translateY(0) !important;
+        -ms-transform: translateY(0) !important;
+            transform: translateY(0) !important;
+
+}
+/* .open for modal and backdrop to use in shared.js */
+
+/* @keyframes wiggle{
+    from {
+        transform:rotateZ(0) ;
+    } */
+    /* starting scale */
+    /* there is no CSS selector but just the CSS property */
+    /* we can change any css property like color, font-size.. */
+
+    /* to {
+        transform: rotateZ(10deg);
+    } */
+/* } */
+
+@-webkit-keyframes wiggle{
+    0% {
+        -webkit-transform:rotateZ(0) ;
+                transform:rotateZ(0) ;
+    }
+
+    50% {
+        -webkit-transform: rotateZ(-10deg);
+                transform: rotateZ(-10deg);
+    }
+
+    100% {
+        -webkit-transform: rotateZ(10deg);
+                transform: rotateZ(10deg);
+    }
+}
+
+@keyframes wiggle{
+    0% {
+        -webkit-transform:rotateZ(0) ;
+                transform:rotateZ(0) ;
+    }
+
+    50% {
+        -webkit-transform: rotateZ(-10deg);
+                transform: rotateZ(-10deg);
+    }
+
+    100% {
+        -webkit-transform: rotateZ(10deg);
+                transform: rotateZ(10deg);
+    }
+}.example {
+    display: -ms-grid;
+    display: grid;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    background: -webkit-gradient(linear, left top, left bottom, from(white), to(black));
+    background: -o-linear-gradient(top, white, black);
+    background: linear-gradient(to bottom, white, black);
+}
